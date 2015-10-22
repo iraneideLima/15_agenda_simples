@@ -1,4 +1,4 @@
-package cadastro.aluno;
+package aluno;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -42,7 +42,7 @@ public class Gui extends JFrame{
 	JList<String> listaContatosBusca = new JList<String>(modeloListaBusca);
 	JScrollPane barraRolagemBusca = new JScrollPane(listaContatosBusca);
 	
-	CCadastro cadastroGui = new CCadastro();
+	Cadastro cadastroGui = new Cadastro();
 	
 	public Gui(int reset) {
 		// TODO Auto-generated constructor stub

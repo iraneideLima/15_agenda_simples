@@ -1,13 +1,13 @@
-package cadastro.aluno;
+package aluno;
 
-import cadastro.IContato;
+import cliente.IContato;
 
-public class CContato implements IContato {
+public class Contato implements IContato {
 	
 	private String nome;
 	private String telefone;
 	
-	public CContato(String telefone, String nome) {
+	public Contato(String telefone, String nome) {
 		// TODO Auto-generated constructor stub
 		this.nome = nome;		
 		this.telefone = telefone;

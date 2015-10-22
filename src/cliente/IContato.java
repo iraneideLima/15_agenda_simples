@@ -1,4 +1,4 @@
-package cadastro;
+package cliente;
 
 
 public interface IContato {

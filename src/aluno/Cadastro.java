@@ -1,12 +1,12 @@
-package cadastro.aluno;
+package aluno;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cadastro.ICadastro;
-import cadastro.IContato;
+import cliente.ICadastro;
+import cliente.IContato;
 
-public class CCadastro implements ICadastro {
+public class Cadastro implements ICadastro {
 	
 	private List<IContato> listaContatos = new ArrayList<IContato>();
 	private int maxContatos = 0;
@@ -30,7 +30,7 @@ public class CCadastro implements ICadastro {
 	@Override
 	public boolean adicionarContato(String telefone, String nome) {
 		// TODO Auto-generated method stub
-		IContato iContato = new CContato(telefone, nome);
+		IContato iContato = new Contato(telefone, nome);
 		if (getContatoByTel(telefone) == null) {
 			if (validaTelefone(telefone) && nome != null){
 				if (this.listaContatos.size() < this.maxContatos) {
