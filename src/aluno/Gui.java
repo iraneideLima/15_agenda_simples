@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import cliente.IContato;
+
 public class Gui extends JFrame{
 	
 	/**
@@ -114,7 +116,6 @@ public class Gui extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				cadastroGui.adicionarContato(campoTelefone.getText().toString(),
 											 campoNome.getText().toString());
 				instanciaLista();
@@ -163,8 +164,8 @@ public class Gui extends JFrame{
 		modeloLista.removeAllElements();
 		
 		int i = 0;
-		for (String contato : cadastroGui.getContatos()) {
-			modeloLista.add(i, contato);
+		for (IContato contato : cadastroGui.getContatos()) {
+			modeloLista.add(i, contato.toString());
 			i++;
 		}
 		

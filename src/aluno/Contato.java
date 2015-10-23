@@ -37,4 +37,8 @@ public class Contato implements IContato {
 		this.telefone = telefone;
 	}
 
+	@Override
+	public String toString() {
+		return nome + " " + telefone;
+	}
 }

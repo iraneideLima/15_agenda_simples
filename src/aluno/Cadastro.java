@@ -13,6 +13,8 @@ public class Cadastro implements ICadastro {
 	
 	
 	boolean validaTelefone(String telefone){
+		if (telefone == null)
+			return false;
 		if (telefone.matches("[0-9]+"))
 			return true;
 		return false;
@@ -30,11 +32,11 @@ public class Cadastro implements ICadastro {
 	@Override
 	public boolean adicionarContato(String telefone, String nome) {
 		// TODO Auto-generated method stub
-		IContato iContato = new Contato(telefone, nome);
+		IContato contato = new Contato(telefone, nome);
 		if (getContatoByTel(telefone) == null) {
 			if (validaTelefone(telefone) && nome != null){
 				if (this.listaContatos.size() < this.maxContatos) {
-				this.listaContatos.add(iContato);
+				this.listaContatos.add(contato);
 					return true;			
 				}
 			}
@@ -45,9 +47,9 @@ public class Cadastro implements ICadastro {
 	@Override
 	public IContato getContatoByTel(String telefone) {
 		// TODO Auto-generated method stub
-		for (IContato iContato : listaContatos) {
-			if (iContato.getTelefone().equals(telefone)) {
-				return iContato;
+		for (IContato contato : listaContatos) {
+			if (contato.getTelefone().equals(telefone)) {
+				return contato;
 			}
 		}
 		return null;
@@ -55,21 +57,9 @@ public class Cadastro implements ICadastro {
 
 	@Override
 	public boolean atualizarContato(String telefone, String nome) {
-		// TODO Auto-generated method stub
-		for (IContato iContato : listaContatos) {
-			if(iContato.getTelefone().equals(telefone) && nome != null){
-				iContato.setNome(nome);
-			}
-		}
-		return false;
-	}
-
-	@Override
-	public boolean removerContato(String telefone) {
-		// TODO Auto-generated method stub
-		for (IContato iContato : listaContatos) {
-			if(iContato.getTelefone().equals(telefone)){
-				listaContatos.remove(iContato);
+		for (IContato contato : listaContatos) {
+			if(contato.getTelefone().equals(telefone) && (nome != "") && (nome != null)){
+				contato.setNome(nome);
 				return true;
 			}
 		}
@@ -77,28 +67,30 @@ public class Cadastro implements ICadastro {
 	}
 
 	@Override
-	public List<String> getContatos() {
-		// TODO Auto-generated method stub
-		List<String> listaTelefones = new ArrayList<String>();
-		
-		for (IContato iContato : listaContatos) {
-			listaTelefones.add(iContato.getTelefone()+" - "+iContato.getNome());
+	public boolean removerContato(String telefone) {
+		for (IContato contato : listaContatos) {
+			if(contato.getTelefone().equals(telefone)){
+				listaContatos.remove(contato);
+				return true;
+			}
 		}
+		return false;
+	}
 
-		return listaTelefones;
+	@Override
+	public List<IContato> getContatos() {
+		return listaContatos;
 	}
 
 	@Override
 	public List<String> getTelefones(String contato) {
-		// TODO Auto-generated method stub
 		List<String> listaTelefones = new ArrayList<String>();
 		
-		for (IContato iContato : listaContatos) {
-			if (iContato.getNome().equals(contato)) {
-				listaTelefones.add(iContato.getTelefone());
+		for (IContato c : listaContatos) {
+			if (contato.equals(c.getNome())) {
+				listaTelefones.add(c.getTelefone());
 			}
 		}		
 		return listaTelefones;
 	}
-
 }
