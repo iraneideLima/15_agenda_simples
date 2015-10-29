@@ -97,7 +97,7 @@ public class TestesCadastro {
 		assertTrue(cadastroTest.getTelefones("Pedro Álvares").size()==3);
 		
 		//Ronildo não tem telefone
-		assertTrue(cadastroTest.getTelefones("Ronildo Oliveira").size()==0);
+		assertEquals(null, cadastroTest.getTelefones("Ronildo Oliveira"));
 	}
 
 }
